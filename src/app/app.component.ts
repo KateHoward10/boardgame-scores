@@ -26,6 +26,10 @@ export class AppComponent implements OnInit {
   }
 
   addPlayer(name: string) {
-    this.players.push(name);
+    this.players.push({ name, score: 0 });
+  }
+
+  updateScore(i: number, diff: number) {
+    this.players[i].score += diff;
   }
 }

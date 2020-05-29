@@ -4,5 +4,9 @@
 <button (click)="addPlayer(playerName.value); playerName.value=''">Add</button>
 
 <ul>
-  <li *ngFor="let player of players">{{ player }}</li>
+  <li *ngFor="let player of players; let i = index">
+    {{ player.name }}: {{ player.score }}
+    <input #diff type="number" />
+    <button (click)="updateScore(i, +diff.value)">Update score</button>
+  </li>
 </ul>
