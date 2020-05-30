@@ -9,18 +9,21 @@
 <ul>
   <li *ngFor="let player of players; let i = index">
     <span>{{ player.name }}: <strong>{{ player.score }}</strong></span>
-    <div class="score-control">
-      <div>
-        <label for="diff" class="small">Number</label>
-        <input #diff type="number" />
+    <div class="container">
+      <div class="score-control">
+        <div>
+          <label for="diff" class="small">Number</label>
+          <input #diff type="number" />
+        </div>
+        <div>
+          <label for="multiplier" class="small">Multiplier</label>
+          <select #multiplier>
+            <option *ngFor="let multiplier of multipliers" [value]="multiplier.points">{{ multiplier.colour }} (×{{ multiplier.points }})</option>
+          </select>
+        </div>
+        <button (click)="updateScore(i, +diff.value * +multiplier.value)" class="update-button">Update score</button>
       </div>
-      <div>
-        <label for="multiplier" class="small">Multiplier</label>
-        <select #multiplier>
-          <option *ngFor="let multiplier of multipliers" [value]="multiplier.points">{{ multiplier.colour }} (×{{ multiplier.points }})</option>
-        </select>
-      </div>
-      <button (click)="updateScore(i, +diff.value * +multiplier.value)" class="update-button">Update score</button>
+      <button (click)="removePlayer(i)" class="delete-button">×</button>
     </div>
   </li>
 </ul>

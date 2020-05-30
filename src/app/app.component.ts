@@ -32,6 +32,13 @@ export class AppComponent implements OnInit {
     localStorage.setItem('players', JSON.stringify(this.players));
   }
 
+  removePlayer(i: number) {
+    if (window.confirm("Are you sure you want to delete this player?")) {
+      this.players = this.players.filter((player, index) => i !== index);
+      localStorage.setItem('players', JSON.stringify(this.players));
+    }
+  }
+
   updateScore(i: number, diff: number) {
     this.players[i].score += diff;
     localStorage.setItem('players', JSON.stringify(this.players));
