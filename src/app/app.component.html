@@ -1,7 +1,7 @@
 <h1>Boardgame Scores</h1>
 
 <form>
-  <label>Add a new player: <input #playerName /></label>
+  <label>Add a new player: <input #playerName placeholder="Name" /></label>
   <button (click)="addPlayer(playerName.value); playerName.value=''" type="submit">Add</button>
 </form>
 
