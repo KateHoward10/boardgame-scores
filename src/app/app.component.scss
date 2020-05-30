@@ -9,9 +9,41 @@
 ul {
   list-style: none;
   margin: 0;
+  padding: 0;
   width: 60vw;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
 }
 
 input[type=number] {
   width: 40px;
+  margin-right: 5px;
+  &::-webkit-inner-spin-button {
+      opacity: 1
+  }
+}
+
+.score-control {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border: 1px dashed grey;
+}
+
+.small {
+  display: block;
+  font-size: 12px;
+}
+
+.update-button {
+  margin-left: 5px;
 }

@@ -1,18 +1,26 @@
 <h1>Boardgame Scores</h1>
 
-<div>
+<form>
   <label>Add a new player: <input #playerName /></label>
-  <button (click)="addPlayer(playerName.value); playerName.value=''">Add</button>
-</div>
+  <button (click)="addPlayer(playerName.value); playerName.value=''" type="submit">Add</button>
+</form>
 
 <h2 *ngIf="players.length">Players</h2>
 <ul>
   <li *ngFor="let player of players; let i = index">
-    {{ player.name }}: {{ player.score }}
-    <input #diff type="number" />
-    <select #multiplier>
-      <option *ngFor="let multiplier of multipliers" [value]="multiplier.points">{{ multiplier.colour }}</option>
-    </select>
-    <button (click)="updateScore(i, +diff.value * +multiplier.value)">Update score</button>
+    <span>{{ player.name }}: <strong>{{ player.score }}</strong></span>
+    <div class="score-control">
+      <div>
+        <label for="diff" class="small">Number</label>
+        <input #diff type="number" />
+      </div>
+      <div>
+        <label for="multiplier" class="small">Multiplier</label>
+        <select #multiplier>
+          <option *ngFor="let multiplier of multipliers" [value]="multiplier.points">{{ multiplier.colour }} (×{{ multiplier.points }})</option>
+        </select>
+      </div>
+      <button (click)="updateScore(i, +diff.value * +multiplier.value)" class="update-button">Update score</button>
+    </div>
   </li>
 </ul>
