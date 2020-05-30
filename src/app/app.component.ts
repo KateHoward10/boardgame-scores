@@ -12,8 +12,9 @@ export class AppComponent implements OnInit {
   multipliers: any[];
 
   ngOnInit(): void {
-    this.players = [];
+    this.players = JSON.parse(localStorage.getItem('players')) || [];
     this.multipliers = [
+      { colour: 'none', points: 1 },
       { colour: 'orange', points: 1 },
       { colour: 'blue', points: 2 },
       { colour: 'green', points: 3 },
@@ -28,9 +29,11 @@ export class AppComponent implements OnInit {
 
   addPlayer(name: string) {
     this.players.push({ name, score: 0 });
+    localStorage.setItem('players', JSON.stringify(this.players));
   }
 
   updateScore(i: number, diff: number) {
     this.players[i].score += diff;
+    localStorage.setItem('players', JSON.stringify(this.players));
   }
 }
